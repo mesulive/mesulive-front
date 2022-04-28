@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useStarforce } from "lib/hooks/redux/starforce";
-import styles from "./Cost.module.scss";
 import classNames from "classnames/bind";
 import { putUnit, sliceString } from "lib/utils";
 import Input from "components/module/Input";
 import { CompareArrowsRounded } from "@mui/icons-material";
+import styles from "./Cost.module.scss";
 // import {mean} from "mathjs";
 import CostChart from "./CostChart";
 
@@ -56,7 +56,7 @@ const Cost = () => {
 
                 if (value !== "") {
                   const pct = parseFloat(value);
-                  if (0 < pct && pct <= 100) {
+                  if (pct > 0 && pct <= 100) {
                     let i = Math.ceil((costArr.length * pct) / 100) - 1;
                     i = i < 0 ? 0 : i;
                     i = i >= costArr.length ? costArr.length - 1 : i;
@@ -81,8 +81,8 @@ const Cost = () => {
                 setCost(value);
 
                 if (value !== "") {
-                  const c = parseInt(value);
-                  if (0 < c) {
+                  const c = parseInt(value, 10);
+                  if (c > 0) {
                     let i;
                     for (i = 0; i < costArr.length; i++) {
                       if (costArr[i] > c) break;

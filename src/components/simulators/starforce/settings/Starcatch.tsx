@@ -1,10 +1,10 @@
 import React from "react";
 import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
 import { shallowEqual } from "react-redux";
-import styles from "./Starcatch.module.scss";
 import classNames from "classnames/bind";
 import ToggleButton from "components/module/ToggleButton";
 import { getReachableStar } from "lib/starforce";
+import styles from "./Starcatch.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -44,7 +44,7 @@ const Starcatch = () => {
                         i % 2 === 1))) ||
                   (targetStar !== undefined && i >= targetStar) ||
                   ((event === "1516" || event === "shining") &&
-                    0 < i &&
+                    i > 0 &&
                     i < 16 &&
                     i % 5 === 0)
                 }

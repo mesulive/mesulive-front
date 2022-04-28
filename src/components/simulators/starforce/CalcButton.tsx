@@ -1,10 +1,10 @@
 import React from "react";
 import LoadingButton from "components/module/LoadingButton";
-import styles from "./CalcButton.module.scss";
 import classNames from "classnames/bind";
 import { CalculateRounded } from "@mui/icons-material";
 import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
 import Button from "components/module/Button";
+import styles from "./CalcButton.module.scss";
 
 const cx = classNames.bind(styles);
 

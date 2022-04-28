@@ -1,6 +1,6 @@
-import {ActionType, createAction, createReducer} from "typesafe-actions";
+import { ActionType, createAction, createReducer } from "typesafe-actions";
 import produce from "immer";
-import {StarforceEvent} from "lib/starforce";
+import { StarforceEvent } from "lib/starforce";
 
 // Action constants
 export const SET_EQUIP_LEVEL = "sim/starforce/SET_EQUIP_LEVEL";
@@ -19,22 +19,46 @@ export const SET_PROGRESS = "sim/starforce/SET_PROGRESS";
 export const SET_ERROR = "sim/starforce/SET_ERROR";
 
 export const START_CALC = "sim/starforce/START_CALC";
-export const CANCEL_CALC = "sim/starforce/CANCEL_CALC"
+export const CANCEL_CALC = "sim/starforce/CANCEL_CALC";
 
 // Actions
-const setEquipLevel = createAction(SET_EQUIP_LEVEL, (n: number | undefined) => n)();
-const setCurrentStar = createAction(SET_CURRENT_STAR, (n: number | undefined) => n)();
-const setTargetStar = createAction(SET_TARGET_STAR, (n: number | undefined) => n)();
-const setSpareCost = createAction(SET_SPARE_COST, (n: number | undefined) => n)();
-const setErrorMessage = createAction(SET_ERROR_MESSAGE, (key: string, message: string) => ({key, message}))();
+const setEquipLevel = createAction(
+  SET_EQUIP_LEVEL,
+  (n: number | undefined) => n
+)();
+const setCurrentStar = createAction(
+  SET_CURRENT_STAR,
+  (n: number | undefined) => n
+)();
+const setTargetStar = createAction(
+  SET_TARGET_STAR,
+  (n: number | undefined) => n
+)();
+const setSpareCost = createAction(
+  SET_SPARE_COST,
+  (n: number | undefined) => n
+)();
+const setErrorMessage = createAction(
+  SET_ERROR_MESSAGE,
+  (key: string, message: string) => ({ key, message })
+)();
 const setSimNum = createAction(SET_SIM_NUM, (n: number | undefined) => n)();
 const toggleSafeguard = createAction(TOGGLE_SAFEGUARD, (i: number) => i)();
 const toggleStarcatch = createAction(TOGGLE_STARCATCH, (i: number) => i)();
 const setEvent = createAction(SET_EVENT, (v: StarforceEvent) => v)();
 const toggleDiscount = createAction(TOGGLE_DISCOUNT, (v: string) => v)();
-const setFlag = createAction(SET_FLAG, (key: string, b: boolean) => ({key, b}))();
-const setResult = createAction(SET_RESULT,
-  (simNum: number, costArr: number[], destroyedArr: number[]) => ({simNum, costArr, destroyedArr}))();
+const setFlag = createAction(SET_FLAG, (key: string, b: boolean) => ({
+  key,
+  b,
+}))();
+const setResult = createAction(
+  SET_RESULT,
+  (simNum: number, costArr: number[], destroyedArr: number[]) => ({
+    simNum,
+    costArr,
+    destroyedArr,
+  })
+)();
 const setProgress = createAction(SET_PROGRESS, (n: number) => n)();
 const setError = createAction(SET_ERROR, (e: any) => e)();
 
@@ -43,11 +67,22 @@ const startCalc = createAction(START_CALC)();
 const cancelCalc = createAction(CANCEL_CALC)();
 
 export const actions = {
-  setEquipLevel, setCurrentStar, setTargetStar, setSpareCost, setErrorMessage,
-  setSimNum, toggleSafeguard, toggleStarcatch, setEvent, toggleDiscount,
+  setEquipLevel,
+  setCurrentStar,
+  setTargetStar,
+  setSpareCost,
+  setErrorMessage,
+  setSimNum,
+  toggleSafeguard,
+  toggleStarcatch,
+  setEvent,
+  toggleDiscount,
   setFlag,
-  setResult, setProgress, setError,
-  startCalc, cancelCalc
+  setResult,
+  setProgress,
+  setError,
+  startCalc,
+  cancelCalc,
 };
 
 // Types
@@ -93,8 +128,8 @@ export type StarforceState = {
     costArr: number[];
     destroyedArr: number[];
     error: any;
-  }
-}
+  };
+};
 
 // Initial state
 const initialState: StarforceState = {
@@ -102,7 +137,7 @@ const initialState: StarforceState = {
     equipLevel: undefined,
     currentStar: undefined,
     targetStar: undefined,
-    spareCost: undefined
+    spareCost: undefined,
   },
   errorMessage: {
     equipLevel: "",
@@ -120,13 +155,13 @@ const initialState: StarforceState = {
       MVP_silver: false,
       MVP_gold: false,
       MVP_diamond: false,
-      PC_room: false
-    }
+      PC_room: false,
+    },
   },
   flag: {
     isReady: false,
     isLoading: false,
-    isSuccessful: true
+    isSuccessful: true,
   },
   result: {
     simNum: 0,
@@ -134,69 +169,69 @@ const initialState: StarforceState = {
     costArr: [],
     destroyedArr: [],
     error: null,
-  }
-}
+  },
+};
 
 // Reducer
 const starforce = createReducer<StarforceState, StarforceAction>(initialState, {
-  [SET_EQUIP_LEVEL]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_EQUIP_LEVEL]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.equipInfo.equipLevel = n;
     }),
-  [SET_CURRENT_STAR]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_CURRENT_STAR]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.equipInfo.currentStar = n;
     }),
-  [SET_TARGET_STAR]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_TARGET_STAR]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.equipInfo.targetStar = n;
     }),
-  [SET_SPARE_COST]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_SPARE_COST]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.equipInfo.spareCost = n;
     }),
-  [SET_ERROR_MESSAGE]: (state, {payload: {key, message}}) =>
-    produce((state), draft => {
+  [SET_ERROR_MESSAGE]: (state, { payload: { key, message } }) =>
+    produce(state, (draft) => {
       draft.errorMessage[key] = message;
     }),
-  [SET_SIM_NUM]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_SIM_NUM]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.detail.simNum = n;
     }),
-  [TOGGLE_SAFEGUARD]: (state, {payload: i}) =>
-    produce(state, draft => {
+  [TOGGLE_SAFEGUARD]: (state, { payload: i }) =>
+    produce(state, (draft) => {
       draft.detail.safeguardArr[i] = !draft.detail.safeguardArr[i];
     }),
-  [TOGGLE_STARCATCH]: (state, {payload: i}) =>
-    produce(state, draft => {
+  [TOGGLE_STARCATCH]: (state, { payload: i }) =>
+    produce(state, (draft) => {
       draft.detail.starcatchArr[i] = !draft.detail.starcatchArr[i];
     }),
-  [SET_EVENT]: (state, {payload: v}) =>
-    produce(state, draft => {
+  [SET_EVENT]: (state, { payload: v }) =>
+    produce(state, (draft) => {
       draft.detail.event = v;
     }),
-  [TOGGLE_DISCOUNT]: (state, {payload: v}) =>
-    produce(state, draft => {
+  [TOGGLE_DISCOUNT]: (state, { payload: v }) =>
+    produce(state, (draft) => {
       draft.detail.discount[v] = !draft.detail.discount[v];
     }),
-  [SET_FLAG]: (state, {payload: {key, b}}) =>
-    produce(state, draft => {
+  [SET_FLAG]: (state, { payload: { key, b } }) =>
+    produce(state, (draft) => {
       draft.flag[key] = b;
     }),
-  [SET_RESULT]: (state, {payload: {simNum, costArr, destroyedArr}}) =>
-    produce(state, draft => {
+  [SET_RESULT]: (state, { payload: { simNum, costArr, destroyedArr } }) =>
+    produce(state, (draft) => {
       draft.result.simNum = simNum;
       draft.result.costArr = costArr;
       draft.result.destroyedArr = destroyedArr;
     }),
-  [SET_PROGRESS]: (state, {payload: n}) =>
-    produce(state, draft => {
+  [SET_PROGRESS]: (state, { payload: n }) =>
+    produce(state, (draft) => {
       draft.result.progress = n;
     }),
-  [SET_ERROR]: (state, {payload: e}) =>
-    produce(state, draft => {
+  [SET_ERROR]: (state, { payload: e }) =>
+    produce(state, (draft) => {
       draft.result.error = e;
-    })
+    }),
 });
 
 export default starforce;

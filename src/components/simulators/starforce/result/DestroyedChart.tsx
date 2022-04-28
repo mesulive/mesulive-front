@@ -4,9 +4,9 @@ import * as Highcharts from "highcharts";
 import { putUnit } from "lib/utils";
 import variable from "lib/styles/utils.module.scss";
 import HighchartsReact from "highcharts-react-official";
-import styles from "./DestroyedChart.module.scss";
 import classNames from "classnames/bind";
 import { Skeleton } from "@mui/material";
+import styles from "./DestroyedChart.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -19,9 +19,7 @@ const DestroyedChart = () => {
   let width = Math.ceil((data[data.length - 1] - data[0]) / bin);
   const digit = width.toString().length;
   width =
-    width < 1
-      ? 1
-      : Math.round(width / Math.pow(10, digit - 1)) * Math.pow(10, digit - 1);
+    width < 1 ? 1 : Math.round(width / 10 ** (digit - 1)) * 10 ** (digit - 1);
 
   if (width !== 1) {
     for (let i = 0; i < data.length; i++) {

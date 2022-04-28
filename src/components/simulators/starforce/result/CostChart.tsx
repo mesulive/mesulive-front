@@ -5,8 +5,8 @@ import { putUnit } from "lib/utils";
 import variable from "lib/styles/utils.module.scss";
 import HighchartsReact from "highcharts-react-official";
 import classNames from "classnames/bind";
-import styles from "./CostChart.module.scss";
 import { Skeleton } from "@mui/material";
+import styles from "./CostChart.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -17,8 +17,8 @@ const CostChart = () => {
   const data = costArr.slice(0, Math.round(simNum * 0.999));
   let bin = 30;
   let width = Math.ceil((data[data.length - 1] - data[0]) / bin);
-  let digit = width.toString().length;
-  width = Math.round(width / Math.pow(10, digit - 1)) * Math.pow(10, digit - 1);
+  const digit = width.toString().length;
+  width = Math.round(width / 10 ** (digit - 1)) * 10 ** (digit - 1);
 
   for (let i = 0; i < data.length; i++) {
     data[i] = Math.floor(data[i] / width) * width;

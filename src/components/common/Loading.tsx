@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames/bind";
-import styles from "./Loading.module.scss";
 import { CircularProgress } from "@mui/material";
+import styles from "./Loading.module.scss";
 
 const cx = classNames.bind(styles);
 

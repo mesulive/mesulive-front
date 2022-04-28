@@ -2,11 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useStarforce } from "lib/hooks/redux/starforce";
 // import {mean} from "mathjs";
 import { putUnit, sliceString } from "lib/utils";
-import styles from "./Destroyed.module.scss";
 import classNames from "classnames/bind";
-import DestroyedChart from "./DestroyedChart";
 import Input from "components/module/Input";
 import { CompareArrowsRounded } from "@mui/icons-material";
+import DestroyedChart from "./DestroyedChart";
+import styles from "./Destroyed.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -66,7 +66,7 @@ const Destroyed = () => {
 
                 if (value !== "") {
                   const pct = parseFloat(value);
-                  if (0 < pct && pct <= 100) {
+                  if (pct > 0 && pct <= 100) {
                     let i = Math.ceil((destroyedArr.length * pct) / 100) - 1;
                     i = i < 0 ? 0 : i;
                     i = i >= destroyedArr.length ? destroyedArr.length - 1 : i;
@@ -90,8 +90,8 @@ const Destroyed = () => {
                 setCnt(value);
 
                 if (value !== "") {
-                  const c = parseInt(value);
-                  if (0 <= c) {
+                  const c = parseInt(value, 10);
+                  if (c >= 0) {
                     let i;
                     for (i = 0; i < destroyedArr.length; i++) {
                       if (destroyedArr[i] > c) break;

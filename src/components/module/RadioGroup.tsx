@@ -12,7 +12,7 @@ type RadioButtonProps = {
   name: string;
   value: any;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  itemList: { value: any; label: any }[];
+  itemList: { v: any; label: any }[];
   className?: string;
 };
 
@@ -26,10 +26,10 @@ const RadioGroup = ({
   return (
     <FormControl className={classNames("styled-mui-radio", className)}>
       <MuiRadioGroup name={name} value={value} onChange={handleChange}>
-        {itemList.map(({ value, label }) => (
+        {itemList.map(({ v, label }) => (
           <FormControlLabel
-            key={`${name}/${value}`}
-            value={value}
+            key={`${name}/${v}`}
+            value={v}
             control={<Radio />}
             label={label}
           />
