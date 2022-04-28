@@ -1,0 +1,21 @@
+@import "lib/styles/utils.module";
+
+.styled-mui-toggle {
+  &.MuiToggleButton-root {
+    @include setFont(12px, 500);
+    border: none;
+    width: 100%;
+    padding: 8px 0;
+    transition: background-color 0.3s ease;
+    border-radius: 0;
+
+    &[value=true] {
+      color: $color_black_3;
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    &.Mui-disabled {
+      color: $color_black_6;
+    }
+  }
+}

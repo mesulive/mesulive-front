@@ -1,0 +1,62 @@
+@import "lib/styles/utils.module";
+
+.container {
+  @include tabletOrWider() {
+    transition: all $time_navi_toggle cubic-bezier(0.4, 0, 0.6, 1);
+    margin-left: 0;
+    width: 100%;
+  }
+
+  &.navi-active {
+    @include tablet() {
+      transition: all $time_navi_toggle cubic-bezier(0, 0, 0.2, 1);
+      margin-left: $navi_width_default;
+      width: calc(100% - #{$navi_width_default});
+    }
+
+    @include laptop() {
+      transition: all $time_navi_toggle cubic-bezier(0, 0, 0.2, 1);
+      margin-left: $navi_width_default;
+      width: calc(100% - #{$navi_width_default});
+    }
+  }
+
+  @include desktop() {
+    margin-left: $navi_width_desktop;
+    width: calc(100% - #{$navi_width_desktop});
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all $time_navi_toggle ease;
+  z-index: 998;
+}
+
+.overlayActive {
+  opacity: 1;
+}
+
+.page {
+  padding: 16px;
+}
+
+.drawer {
+  :global .MuiDrawer-paper {
+    @include tabletOrWider() {
+      z-index: 700;
+      top: 64px;
+    }
+  }
+}
+
+footer {
+  margin: 48px 0 32px;
+  padding: 0 16px;
+  @include setFont(12px, 500);
+  color: $color_black_5;
+  text-align: center;
+}

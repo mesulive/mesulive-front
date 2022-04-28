@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@500;700&display=swap');
+@import "lib/styles/utils.module.scss";
+
+body {
+  margin: 0;
+  font-family: Roboto, Noto Sans KR, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  background-color: #f8fafb;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #bdbdbd;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #e1e1e1;
+  }
+}
+
+img {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: crisp-edges;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.MuiPaper-root {
+  box-shadow: 0 0 30px #7176791A;
+
+  .MuiMenuItem-root {
+    @include setFont(16px, 500);
+
+    &.Mui-selected {
+      color: $color_primary;
+    }
+  }
+}

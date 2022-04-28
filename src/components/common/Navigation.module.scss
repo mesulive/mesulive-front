@@ -1,0 +1,104 @@
+@import "lib/styles/utils.module";
+
+.box {
+  width: 248px;
+  height: 100vh;
+  padding: 32px 16px;
+  background-color: white;
+  @include setFont(14px, 500);
+
+  @include tabletOrWider() {
+    padding-top: 16px;
+  }
+
+  @include desktop() {
+    width: 280px;
+  }
+}
+
+.group {
+  & + & {
+    margin-top: 48px;
+  }
+}
+
+.group-label {
+  font-weight: 700;
+  color: $color_black_1;
+  margin-bottom: 16px;
+}
+
+.link {
+  display: flex;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: $color_black_3;
+  transition: all 0.3s ease;
+  align-items: center;
+
+  & + & {
+    margin-top: 16px;
+  }
+
+  &:hover {
+    background: $color_primary_light_1;
+    color: $color_primary;
+
+    svg {
+      fill: $color_primary;
+    }
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $color_black_3;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+  }
+}
+
+.link-active {
+  background: $color_primary_light_1;
+  color: $color_primary;
+  font-weight: 700;
+
+  svg {
+    fill: $color_primary;
+  }
+}
+
+.link-disabled {
+  @include disabled();
+  pointer-events: none;
+
+  &::after {
+    @include setFont(12px, 500);
+    display: flex;
+    justify-content: center;
+    content: "준비 중";
+    margin-left: auto;
+    color: white;
+    background: $color_black_3;
+    height: 20px;
+    border-radius: 4px;
+    padding: 0 4px;
+  }
+}
+
+.link-beta {
+
+  &::after {
+    @include setFont(12px, 500);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "BETA";
+    margin-left: auto;
+    //color: $color_primary;
+    height: 20px;
+    padding: 0 4px;
+  }
+}

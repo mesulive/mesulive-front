@@ -1,0 +1,36 @@
+@import "lib/styles/utils.module";
+
+.styled-box {
+  background-color: white;
+  padding: 16px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px #7176791A;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+
+  .title {
+    @include setFont(16px, 700);
+    color: $color_primary;
+    display: block;
+    margin: 0 0 16px 0;
+
+    @include laptopOrWider() {
+      @include setFont(18px, 700);
+    }
+  }
+
+  h3 {
+    @include setFont(14px, 700);
+    color: $color_black_2;
+    margin-top: 16px;
+    margin-bottom: 8px;
+
+    @include laptopOrWider() {
+      @include setFont(16px, 700);
+    }
+  }
+}

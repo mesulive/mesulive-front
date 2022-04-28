@@ -1,0 +1,107 @@
+@use "sass:math";
+
+$color_primary: #FF8009;
+$color_primary_dark: #CC6708;
+$color_secondary: #FFB703;
+$color_primary_light_1: #FFECDC;
+$color_primary_light_2: #FFA857;
+$color_black_1: #241F1C;
+$color_black_2: #3b3b3b;
+$color_black_3: #505050;
+$color_black_4: #757575;
+$color_black_5: #9b9b9b;
+$color_black_6: #c5c5c5;
+$color_error: #EF5350;
+
+$breakpoint_tablet: 768px;
+$breakpoint_laptop: 900px;
+$breakpoint_desktop: 1440px;
+
+$time_navi_toggle: 0.3s;
+
+// input size value
+$input_height: 20px;
+$input_fontSize: 14px;
+$input_fontHeight: 20px;
+$input_padding: 12px;
+$input_borderRadius: 10px;
+
+$navi_width_default: 248px;
+$navi_width_desktop: 280px;
+
+@mixin mobile {
+  @media (max-width: $breakpoint_tablet - 1px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-laptop - 1px) {
+    @content;
+  }
+}
+
+@mixin tabletOrWider {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $breakpoint-laptop) and (max-width: $breakpoint-desktop - 1px) {
+    @content;
+  }
+}
+
+@mixin laptopOrWider {
+  @media (min-width: $breakpoint-laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint_desktop) {
+    @content
+  }
+}
+
+@mixin setLetterSpace($fontSize) {
+  $space: $fontSize * -0.025;
+  letter-spacing: $space;
+}
+
+@mixin setFont($fontSize, $weight) {
+  @include setLetterSpace($fontSize);
+  font-family: Roboto, Noto Sans KR, sans-serif;
+  font-weight: $weight;
+  font-style: normal;
+  font-size: $fontSize;
+  user-select: none;
+}
+
+@mixin disabled() {
+  opacity: 0.5;
+}
+
+@mixin helperText() {
+  @include setFont(10px, 500);
+  color: $color_black_5;
+  margin: 0;
+
+  @include laptopOrWider() {
+    @include setFont(11px, 500);
+  }
+}
+
+:export {
+  naviToggleTime: math.div($time_navi_toggle, 1s);
+  primaryColor: $color_primary;
+  primaryColor_dark: $color_primary_dark;
+  primaryColor_light_1: $color_primary_light_1;
+  primaryColor_light_2: $color_primary_light_2;
+  secondaryColor: $color_secondary;
+  errorColor: $color_error;
+  breakpoint_tablet: math.div($breakpoint-tablet, 1px);
+  breakpoint_laptop: math.div($breakpoint-laptop, 1px);
+  breakpoint_desktop: math.div($breakpoint-desktop, 1px);
+}
