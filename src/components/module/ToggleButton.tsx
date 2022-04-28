@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react';
-import {ToggleButton as MuiToggleButton} from "@mui/material";
+import React, { ReactNode } from "react";
+import { ToggleButton as MuiToggleButton } from "@mui/material";
 import "./ToggleButton.scss";
 import classNames from "classnames";
 
@@ -9,17 +9,15 @@ type ToggleButtonProps = {
   disabled?: boolean;
   className?: string;
   children: ReactNode;
-}
+};
 
-const ToggleButton = (
-  {
-    children,
-    value,
-    handleChange,
-    disabled,
-    className
-  }: ToggleButtonProps
-) => {
+const ToggleButton = ({
+  children,
+  value,
+  handleChange,
+  disabled,
+  className,
+}: ToggleButtonProps) => {
   return (
     <MuiToggleButton
       className={classNames("styled-mui-toggle", className)}

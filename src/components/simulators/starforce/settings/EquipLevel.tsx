@@ -1,12 +1,12 @@
-import React from 'react';
-import {useStarforce, useStarforceAction} from "lib/hooks/redux/starforce";
-import {filterValue, sliceString} from "lib/utils";
+import React from "react";
+import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
+import { filterValue, sliceString } from "lib/utils";
 import Input from "components/module/Input";
 
 const EquipLevel = () => {
-  const equipLevel = useStarforce(s => s.equipInfo.equipLevel);
-  const errorMessage = useStarforce(s => s.errorMessage.equipLevel);
-  const {setEquipLevel} = useStarforceAction();
+  const equipLevel = useStarforce((s) => s.equipInfo.equipLevel);
+  const errorMessage = useStarforce((s) => s.errorMessage.equipLevel);
+  const { setEquipLevel } = useStarforceAction();
 
   return (
     <Input
@@ -17,16 +17,14 @@ const EquipLevel = () => {
       value={filterValue(equipLevel, undefined, "")}
       error={errorMessage !== ""}
       helperText={errorMessage}
-      handleChange={
-        ({target: {value}}) => {
-          if (value === "") {
-            setEquipLevel(undefined);
-          } else {
-            const level = parseInt(sliceString(value, 4), 10);
-            setEquipLevel(level);
-          }
+      handleChange={({ target: { value } }) => {
+        if (value === "") {
+          setEquipLevel(undefined);
+        } else {
+          const level = parseInt(sliceString(value, 4), 10);
+          setEquipLevel(level);
         }
-      }
+      }}
     />
   );
 };

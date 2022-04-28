@@ -1,12 +1,12 @@
-import React from 'react';
-import {useStarforce, useStarforceAction} from "lib/hooks/redux/starforce";
-import {filterValue, putUnit, sliceString} from "lib/utils";
+import React from "react";
+import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
+import { filterValue, putUnit, sliceString } from "lib/utils";
 import Input from "components/module/Input";
 
 const SpareCost = () => {
-  const spareCost = useStarforce(s => s.equipInfo.spareCost);
-  const errorMessage = useStarforce(s => s.errorMessage.spareCost);
-  const {setSpareCost} = useStarforceAction();
+  const spareCost = useStarforce((s) => s.equipInfo.spareCost);
+  const errorMessage = useStarforce((s) => s.errorMessage.spareCost);
+  const { setSpareCost } = useStarforceAction();
 
   return (
     <Input
@@ -18,18 +18,18 @@ const SpareCost = () => {
       error={errorMessage !== ""}
       helperText={
         errorMessage ||
-        (spareCost !== undefined ? putUnit(spareCost!) : "빈칸이면 0메소로 계산합니다.")
+        (spareCost !== undefined
+          ? putUnit(spareCost!)
+          : "빈칸이면 0메소로 계산합니다.")
       }
-      handleChange={
-        ({target: {value}}) => {
-          if (value === "") {
-            setSpareCost(undefined);
-          } else {
-            const n = parseInt(sliceString(value, 12), 10);
-            setSpareCost(n);
-          }
+      handleChange={({ target: { value } }) => {
+        if (value === "") {
+          setSpareCost(undefined);
+        } else {
+          const n = parseInt(sliceString(value, 12), 10);
+          setSpareCost(n);
         }
-      }
+      }}
     />
   );
 };

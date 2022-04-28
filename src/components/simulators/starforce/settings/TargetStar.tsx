@@ -1,12 +1,12 @@
-import React from 'react';
-import {useStarforce, useStarforceAction} from "lib/hooks/redux/starforce";
-import {filterValue, sliceString} from "lib/utils";
+import React from "react";
+import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
+import { filterValue, sliceString } from "lib/utils";
 import Input from "components/module/Input";
 
 const TargetStar = () => {
-  const targetStar = useStarforce(s => s.equipInfo.targetStar);
-  const errorMessage = useStarforce(s => s.errorMessage.targetStar);
-  const {setTargetStar} = useStarforceAction();
+  const targetStar = useStarforce((s) => s.equipInfo.targetStar);
+  const errorMessage = useStarforce((s) => s.errorMessage.targetStar);
+  const { setTargetStar } = useStarforceAction();
 
   return (
     <Input
@@ -17,16 +17,14 @@ const TargetStar = () => {
       error={errorMessage !== ""}
       helperText={errorMessage}
       value={filterValue(targetStar, undefined, "")}
-      handleChange={
-        ({target: {value}}) => {
-          if (value === "") {
-            setTargetStar(undefined);
-          } else {
-            const n = parseInt(sliceString(value, 3), 10);
-            setTargetStar(n);
-          }
+      handleChange={({ target: { value } }) => {
+        if (value === "") {
+          setTargetStar(undefined);
+        } else {
+          const n = parseInt(sliceString(value, 3), 10);
+          setTargetStar(n);
         }
-      }
+      }}
     />
   );
 };

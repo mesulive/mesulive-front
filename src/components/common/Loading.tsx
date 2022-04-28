@@ -1,22 +1,18 @@
-import React from 'react';
+import React from "react";
 import classNames from "classnames/bind";
+import { CircularProgress } from "@mui/material";
 import styles from "./Loading.module.scss";
-import {CircularProgress} from "@mui/material";
 
 const cx = classNames.bind(styles);
 
 type LoadingProps = {
   wrapperClassName?: string;
-}
+};
 
-const Loading = (
-  {
-    wrapperClassName
-  }: LoadingProps
-) => {
+const Loading = ({ wrapperClassName }: LoadingProps) => {
   return (
     <div className={cx("wrapper", wrapperClassName)}>
-      <CircularProgress/>
+      <CircularProgress />
     </div>
   );
 };

@@ -1,5 +1,5 @@
-import React, {ReactNode} from 'react';
-import {LoadingButton as MuiLoadingButton} from "@mui/lab";
+import React, { ReactNode } from "react";
+import { LoadingButton as MuiLoadingButton } from "@mui/lab";
 import "./Button.scss";
 import classNames from "classnames";
 
@@ -11,21 +11,19 @@ type LoadingButtonProps = {
   loading?: boolean;
   handleClick?: () => void;
   disabled?: boolean;
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-const LoadingButton = (
-  {
-    children,
-    variant,
-    className,
-    startIcon,
-    endIcon,
-    loading,
-    handleClick,
-    disabled,
-  }: LoadingButtonProps
-) => {
+const LoadingButton = ({
+  children,
+  variant,
+  className,
+  startIcon,
+  endIcon,
+  loading,
+  handleClick,
+  disabled,
+}: LoadingButtonProps) => {
   return (
     <MuiLoadingButton
       className={classNames("styled-mui-button", className)}

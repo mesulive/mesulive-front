@@ -1,5 +1,12 @@
-import React from 'react';
-import {Select as MuiSelect, InputLabel, FormControl, MenuItem, SelectChangeEvent, FormHelperText} from "@mui/material";
+import React from "react";
+import {
+  Select as MuiSelect,
+  InputLabel,
+  FormControl,
+  MenuItem,
+  SelectChangeEvent,
+  FormHelperText,
+} from "@mui/material";
 import "./Input.scss";
 import classNames from "classnames";
 
@@ -10,30 +17,28 @@ type SelectProps = {
   helperText?: string;
   value: any;
   handleChange: (event: SelectChangeEvent) => void;
-  itemList: { value: any, name: any }[];
+  itemList: { value: any; name: any }[];
   disabled?: boolean;
   error?: boolean;
   readOnly?: boolean;
   required?: boolean;
   className?: string;
-}
+};
 
-const Select = (
-  {
-    labelId,
-    selectId,
-    label,
-    helperText,
-    value,
-    handleChange,
-    itemList,
-    disabled,
-    error,
-    readOnly,
-    required,
-    className,
-  }: SelectProps
-) => {
+const Select = ({
+  labelId,
+  selectId,
+  label,
+  helperText,
+  value,
+  handleChange,
+  itemList,
+  disabled,
+  error,
+  readOnly,
+  required,
+  className,
+}: SelectProps) => {
   return (
     <FormControl
       fullWidth
@@ -42,24 +47,22 @@ const Select = (
       error={error}
       required={required}
     >
-      <InputLabel id={labelId}>
-        {label}
-      </InputLabel>
+      <InputLabel id={labelId}>{label}</InputLabel>
       <MuiSelect
         labelId={labelId}
         id={selectId}
         value={value}
         label={label}
         onChange={handleChange}
-        inputProps={{readOnly}}
+        inputProps={{ readOnly }}
       >
-        {
-          itemList.map(({value, name}) => <MenuItem value={value} key={`id/value`}>{name}</MenuItem>)
-        }
+        {itemList.map(({ value, name }) => (
+          <MenuItem value={value} key={`id/value`}>
+            {name}
+          </MenuItem>
+        ))}
       </MuiSelect>
-      {
-        helperText && <FormHelperText>{helperText}</FormHelperText>
-      }
+      {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>
   );
 };
