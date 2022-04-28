@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Box from "components/module/Box";
 import SimNum from "./SimNum";
 import Safeguard from "./Safeguard";
@@ -9,11 +9,11 @@ import Discount from "./Discount";
 const DetailSetting = () => {
   return (
     <Box title="세부 설정" id="sim/starforce/DetailSetting">
-      <SimNum/>
-      <Safeguard/>
-      <Starcatch/>
-      <Event/>
-      <Discount/>
+      <SimNum />
+      <Safeguard />
+      <Starcatch />
+      <Event />
+      <Discount />
     </Box>
   );
 };
