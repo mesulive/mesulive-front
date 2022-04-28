@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {ToggleButton as MuiToggleButton} from "@mui/material";
 import "./ToggleButton.scss";
 import classNames from "classnames";
@@ -8,16 +8,17 @@ type ToggleButtonProps = {
   handleChange: () => void;
   disabled?: boolean;
   className?: string;
+  children: ReactNode;
 }
 
-const ToggleButton: React.FC<ToggleButtonProps> = (
+const ToggleButton = (
   {
     children,
     value,
     handleChange,
     disabled,
     className
-  }
+  }: ToggleButtonProps
 ) => {
   return (
     <MuiToggleButton

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {LoadingButton as MuiLoadingButton} from "@mui/lab";
 import "./Button.scss";
 import classNames from "classnames";
@@ -11,9 +11,10 @@ type LoadingButtonProps = {
   loading?: boolean;
   handleClick?: () => void;
   disabled?: boolean;
+  children: ReactNode
 }
 
-const LoadingButton: React.FC<LoadingButtonProps> = (
+const LoadingButton = (
   {
     children,
     variant,
@@ -23,7 +24,7 @@ const LoadingButton: React.FC<LoadingButtonProps> = (
     loading,
     handleClick,
     disabled,
-  }
+  }: LoadingButtonProps
 ) => {
   return (
     <MuiLoadingButton

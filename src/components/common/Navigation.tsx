@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import classNames from "classnames/bind";
 import styles from "./Navigation.module.scss";
 import {NavLink} from "react-router-dom";
@@ -15,9 +15,10 @@ type LinkProps = {
   onClick: () => any;
   disabled?: boolean;
   beta?: boolean;
+  children: ReactNode;
 }
 
-const Link: React.FC<LinkProps> = ({to, onClick, disabled, beta, children}) => {
+const Link = ({to, onClick, disabled, beta, children}: LinkProps) => {
   return (
     <NavLink
       to={to}
@@ -30,7 +31,7 @@ const Link: React.FC<LinkProps> = ({to, onClick, disabled, beta, children}) => {
   );
 }
 
-const Navigation: React.FC<NavigationProps> = ({active, toggleNavi}) => {
+const Navigation: React.FC<React.PropsWithChildren<NavigationProps>> = ({active, toggleNavi}) => {
   return (
     <nav className={cx("box", {"navi-active": active})}>
       <div className={cx("group")}>

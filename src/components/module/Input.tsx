@@ -21,7 +21,7 @@ type InputProps = {
   className?: string;
 }
 
-const Input: React.FC<InputProps> = (
+const Input = (
   {
     id,
     label,
@@ -38,7 +38,7 @@ const Input: React.FC<InputProps> = (
     readOnly,
     required,
     className,
-  }
+  }: InputProps
 ) => {
   return (
     <TextField

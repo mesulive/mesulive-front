@@ -5,14 +5,14 @@ import {CircularProgress} from "@mui/material";
 
 const cx = classNames.bind(styles);
 
-type Props = {
+type LoadingProps = {
   wrapperClassName?: string;
 }
 
-const Loading: React.FC<Props> = (
+const Loading = (
   {
     wrapperClassName
-  }
+  }: LoadingProps
 ) => {
   return (
     <div className={cx("wrapper", wrapperClassName)}>

@@ -1,20 +1,21 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import "./Box.scss";
 import classNames from "classnames";
 
 type BoxProps = {
   title?: string;
   className?: string;
-  id?:string;
+  id?: string;
+  children: ReactNode
 }
 
-const Box: React.FC<BoxProps> = (
+const Box = (
   {
     title,
     children,
     className,
     id,
-  }
+  }: BoxProps
 ) => {
   return (
     <div className={classNames("styled-box", className)} id={id}>

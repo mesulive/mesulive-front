@@ -10,13 +10,13 @@ type CheckboxProps = {
   className?: string;
 }
 
-const CheckBox: React.FC<CheckboxProps> = (
+const CheckBox = (
   {
     label,
     handleChange,
     checked,
     className
-  }
+  }: CheckboxProps
 ) => {
   return (
     <FormControlLabel

@@ -18,7 +18,7 @@ type SelectProps = {
   className?: string;
 }
 
-const Select: React.FC<SelectProps> = (
+const Select = (
   {
     labelId,
     selectId,
@@ -32,7 +32,7 @@ const Select: React.FC<SelectProps> = (
     readOnly,
     required,
     className,
-  }
+  }: SelectProps
 ) => {
   return (
     <FormControl

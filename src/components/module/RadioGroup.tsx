@@ -8,17 +8,17 @@ type RadioButtonProps = {
   value: any;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   itemList: { value: any, label: any }[];
-  className?: string
+  className?: string;
 }
 
-const RadioGroup: React.FC<RadioButtonProps> = (
+const RadioGroup = (
   {
     name,
     value,
     handleChange,
     itemList,
     className
-  }
+  }: RadioButtonProps
 ) => {
   return (
     <FormControl className={classNames("styled-mui-radio", className)}>

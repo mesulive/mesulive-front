@@ -10,7 +10,7 @@ type HeaderProps = {
   toggleNavi: () => any;
 }
 
-const Header: React.FC<HeaderProps> = ({toggleNavi}) => {
+const Header = ({toggleNavi}: HeaderProps) => {
   return (
     <header className={cx("box")}>
       <Button className={cx("menu-button")} onClick={toggleNavi}>

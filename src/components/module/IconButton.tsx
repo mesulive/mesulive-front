@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {IconButton as MuiIconButton} from "@mui/material";
 import "./Button.scss";
 import classNames from "classnames";
@@ -6,16 +6,17 @@ import classNames from "classnames";
 type IconButtonProps = {
   handleClick?: () => void;
   disabled?: boolean;
-  className?:string;
+  className?: string;
+  children: ReactNode
 }
 
-const IconButton: React.FC<IconButtonProps> = (
+const IconButton = (
   {
     children,
     handleClick,
     disabled,
     className,
-  }
+  }: IconButtonProps
 ) => {
   return (
     <MuiIconButton

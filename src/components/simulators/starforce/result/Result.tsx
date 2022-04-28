@@ -14,11 +14,11 @@ Boost(Highcharts);
 
 const cx = classNames.bind(styles);
 
-type Props = {
-  className?:string
+type ResultProps = {
+  className?: string
 }
 
-const Result:React.FC<Props> = ({className}) => {
+const Result = ({className}: ResultProps) => {
   const simNum = useStarforce(s => s.result.simNum);
 
   return (

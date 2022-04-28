@@ -1,5 +1,5 @@
 import React from 'react';
-import {hydrate, render} from 'react-dom';
+import {hydrateRoot, createRoot} from 'react-dom/client';
 import 'index.scss';
 import App from './App';
 import {ThemeProvider, StyledEngineProvider} from "@mui/material";
@@ -23,12 +23,12 @@ if (process.env.NODE_ENV === "production") {
   //   ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID_DEBUG, {gtagOptions: {debug_mode: true}});
   // }
 
-  if(process.env.REACT_APP_GA_TRACKING_ID) {
+  if (process.env.REACT_APP_GA_TRACKING_ID) {
     ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
   }
 }
 
-const rootElement = document.getElementById("root");
+const rootContainer = document.getElementById("root");
 const app = (
   <Provider store={store}>
     <BrowserRouter>
@@ -40,8 +40,9 @@ const app = (
     </BrowserRouter>
   </Provider>
 );
-if (rootElement && rootElement.hasChildNodes()) {
-  hydrate(app, rootElement);
+const root = createRoot(rootContainer!);
+if (rootContainer && rootContainer.hasChildNodes()) {
+  hydrateRoot(rootContainer, app);
 } else {
-  render(app, rootElement);
+  root.render(app);
 }

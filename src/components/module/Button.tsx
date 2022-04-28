@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {Button as MuiButton} from "@mui/material";
 import "./Button.scss";
 import classNames from "classnames";
@@ -10,9 +10,10 @@ type ButtonProps = {
   endIcon?: any;
   handleClick?: () => void;
   disabled?: boolean;
+  children: ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = (
+const Button = (
   {
     children,
     variant,
@@ -21,7 +22,7 @@ const Button: React.FC<ButtonProps> = (
     endIcon,
     handleClick,
     disabled,
-  }
+  }: ButtonProps
 ) => {
   return (
     <MuiButton
