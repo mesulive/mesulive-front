@@ -57,6 +57,10 @@
     "include": [
       "/",
       "/sim/starforce"
+    ],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
     ]
   },
   "eslintConfig": {
