@@ -2,6 +2,7 @@ import React from "react";
 import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
 import classNames from "classnames/bind";
 import RadioGroup from "components/module/RadioGroup";
+import Label from "common/components/Typography/Label";
 import styles from "./Event.module.scss";
 
 const cx = classNames.bind(styles);
@@ -12,7 +13,7 @@ const Event = () => {
 
   return (
     <>
-      <h3>스타포스 이벤트</h3>
+      <Label>스타포스 이벤트</Label>
       <RadioGroup
         name="sim/starforce/event"
         value={event}

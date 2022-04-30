@@ -1,10 +1,11 @@
 import React from "react";
 import { useStarforce, useStarforceAction } from "lib/hooks/redux/starforce";
 import { shallowEqual } from "react-redux";
-import styles from "./Safeguard.module.scss";
 import classNames from "classnames/bind";
 import ToggleButton from "components/module/ToggleButton";
 import { getReachableStar } from "lib/starforce";
+import Label from "common/components/Typography/Label";
+import styles from "./Safeguard.module.scss";
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ const Safeguard = () => {
 
   return (
     <>
-      <h3>파괴 방지</h3>
+      <Label>파괴 방지</Label>
       <div className={cx("toggle-grid-container")}>
         {safeguardArr.map((v, i) => {
           return (

@@ -4,6 +4,7 @@ import { shallowEqual } from "react-redux";
 import classNames from "classnames/bind";
 import ToggleButton from "components/module/ToggleButton";
 import { getReachableStar } from "lib/starforce";
+import Label from "common/components/Typography/Label";
 import styles from "./Starcatch.module.scss";
 
 const cx = classNames.bind(styles);
@@ -22,7 +23,7 @@ const Starcatch = () => {
   const { toggleStarcatch } = useStarforceAction();
   return (
     <>
-      <h3>스타캐치</h3>
+      <Label>스타캐치</Label>
       <div className={cx("toggle-grid-container")}>
         {starcatchArr.map((v, i) => {
           return (
