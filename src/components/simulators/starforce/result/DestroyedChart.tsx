@@ -1,24 +1,25 @@
-import React from 'react';
-import {useStarforce} from "lib/hooks/redux/starforce";
+import React from "react";
+import { useStarforce } from "lib/hooks/redux/starforce";
 import * as Highcharts from "highcharts";
-import {putUnit} from "lib/utils";
+import { putUnit } from "lib/utils";
 import variable from "lib/styles/utils.module.scss";
 import HighchartsReact from "highcharts-react-official";
-import styles from "./DestroyedChart.module.scss";
 import classNames from "classnames/bind";
-import {Skeleton} from "@mui/material";
+import { Skeleton } from "@mui/material";
+import styles from "./DestroyedChart.module.scss";
 
 const cx = classNames.bind(styles);
 
 const DestroyedChart = () => {
-  const isLoading = useStarforce(s => s.flag.isLoading);
-  const simNum = useStarforce(s => s.result.simNum);
-  const destroyedArr = useStarforce(s => s.result.destroyedArr);
+  const isLoading = useStarforce((s) => s.flag.isLoading);
+  const simNum = useStarforce((s) => s.result.simNum);
+  const destroyedArr = useStarforce((s) => s.result.destroyedArr);
   const data = destroyedArr.slice(0, Math.round(simNum * 0.999));
   let bin = 30;
   let width = Math.ceil((data[data.length - 1] - data[0]) / bin);
-  let digit = width.toString().length;
-  width = width < 1 ? 1 : Math.round(width / Math.pow(10, digit - 1)) * Math.pow(10, digit - 1);
+  const digit = width.toString().length;
+  width =
+    width < 1 ? 1 : Math.round(width / 10 ** (digit - 1)) * 10 ** (digit - 1);
 
   if (width !== 1) {
     for (let i = 0; i < data.length; i++) {
@@ -36,50 +37,58 @@ const DestroyedChart = () => {
 
   const options: Highcharts.Options = {
     title: {
-      text: ""
+      text: "",
     },
 
     credits: {
       enabled: false,
     },
 
-    xAxis: [{
-      title: {text: 'Data'},
-      alignTicks: false,
-      visible: false
-    }, {
-      title: {text: "파괴 횟수"},
-      alignTicks: false,
-      labels: {
-        formatter() {
-          let value;
-          if (typeof this.value === "string") value = parseInt(this.value, 10);
-          else value = this.value;
+    xAxis: [
+      {
+        title: { text: "Data" },
+        alignTicks: false,
+        visible: false,
+      },
+      {
+        title: { text: "파괴 횟수" },
+        alignTicks: false,
+        labels: {
+          formatter() {
+            let value;
+            if (typeof this.value === "string")
+              value = parseInt(this.value, 10);
+            else value = this.value;
 
-          return `${putUnit(value)}`;
-        }
-      }
-    }],
+            return `${putUnit(value)}`;
+          },
+        },
+      },
+    ],
 
-    yAxis: [{
-      title: {text: 'Data'},
-      visible: false,
-    }, {
-      title: {text: "횟수"},
-    }],
+    yAxis: [
+      {
+        title: { text: "Data" },
+        visible: false,
+      },
+      {
+        title: { text: "횟수" },
+      },
+    ],
 
     plotOptions: {
       scatter: {
-        turboThreshold: 1000
+        turboThreshold: 1000,
       },
       histogram: {
         accessibility: {
           point: {
-            valueDescriptionFormat: '{index}. {point.x:.3f} to {point.x2:.3f}, {point.y}.'
-          }
+            valueDescriptionFormat:
+              "{index}. {point.x:.3f} to {point.x2:.3f}, {point.y}.",
+          },
         },
         color: variable.secondaryColor,
-      }
+      },
     },
 
     tooltip: {
@@ -88,40 +97,45 @@ const DestroyedChart = () => {
         if (width > 1) rangeStr += ` ~ ${putUnit(this.point.x + width - 1)}`;
 
         return `${rangeStr}회 : <b x=8 y=40>${this.point.y}회</b>`;
-      }
+      },
     },
 
-    series: [{
-      name: "파괴 횟수",
-      type: 'histogram',
-      baseSeries: 's1',
-      xAxis: 1,
-      yAxis: 1,
-      binsNumber: bin,
-      binWidth: width,
-      showInLegend: false
-    }, {
-      name: 'Data',
-      type: 'scatter',
-      data,
-      id: 's1',
-      marker: {
-        radius: 1.5
+    series: [
+      {
+        name: "파괴 횟수",
+        type: "histogram",
+        baseSeries: "s1",
+        xAxis: 1,
+        yAxis: 1,
+        binsNumber: bin,
+        binWidth: width,
+        showInLegend: false,
       },
-      visible: false,
-      showInLegend: false,
-    }]
+      {
+        name: "Data",
+        type: "scatter",
+        data,
+        id: "s1",
+        marker: {
+          radius: 1.5,
+        },
+        visible: false,
+        showInLegend: false,
+      },
+    ],
   };
 
-  return (
-    !isLoading ?
-      <div className={cx("container")}>
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={options}
-        />
-      </div> :
-      <Skeleton variant="rectangular" height={400} animation="wave" className={cx("skeleton")}/>
+  return !isLoading ? (
+    <div className={cx("container")}>
+      <HighchartsReact highcharts={Highcharts} options={options} />
+    </div>
+  ) : (
+    <Skeleton
+      variant="rectangular"
+      height={400}
+      animation="wave"
+      className={cx("skeleton")}
+    />
   );
 };
 

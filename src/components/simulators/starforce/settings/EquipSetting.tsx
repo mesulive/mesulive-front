@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Box from "components/module/Box";
 import classNames from "classnames/bind";
 import styles from "components/simulators/starforce/settings/EquipSetting.module.scss";
@@ -13,13 +13,13 @@ const EquipSetting = () => {
   return (
     <Box title="장비 정보" id="sim/starforce/EquipSetting">
       <div className={cx("flex-container")}>
-        <EquipLevel/>
-        <SpareCost/>
-        <CurrentStar/>
-        <TargetStar/>
+        <EquipLevel />
+        <SpareCost />
+        <CurrentStar />
+        <TargetStar />
       </div>
     </Box>
-  )
+  );
 };
 
 export default EquipSetting;

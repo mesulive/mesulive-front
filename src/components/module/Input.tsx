@@ -1,5 +1,5 @@
-import React from 'react';
-import {InputAdornment, TextField} from "@mui/material";
+import React from "react";
+import { InputAdornment, TextField } from "@mui/material";
 import "./Input.scss";
 import classNames from "classnames";
 
@@ -13,33 +13,33 @@ type InputProps = {
   type?: string;
   maxLength?: number;
   step?: string;
-  handleChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
+  handleChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void;
   disabled?: boolean;
   error?: boolean;
   readOnly?: boolean;
   required?: boolean;
   className?: string;
-}
+};
 
-const Input = (
-  {
-    id,
-    label,
-    helperText,
-    value,
-    startAdornment,
-    endAdornment,
-    type,
-    maxLength,
-    step,
-    handleChange,
-    disabled,
-    error,
-    readOnly,
-    required,
-    className,
-  }: InputProps
-) => {
+const Input = ({
+  id,
+  label,
+  helperText,
+  value,
+  startAdornment,
+  endAdornment,
+  type,
+  maxLength,
+  step,
+  handleChange,
+  disabled,
+  error,
+  readOnly,
+  required,
+  className,
+}: InputProps) => {
   return (
     <TextField
       fullWidth
@@ -49,20 +49,18 @@ const Input = (
       helperText={helperText}
       value={value}
       InputProps={{
-        startAdornment: startAdornment ?
-          <InputAdornment position="start">
-            {startAdornment}
-          </InputAdornment>
-          : undefined,
-        endAdornment: endAdornment ?
-          <InputAdornment position="end">
-            {endAdornment}
-          </InputAdornment>
-          : undefined,
-        readOnly
+        startAdornment: startAdornment ? (
+          <InputAdornment position="start">{startAdornment}</InputAdornment>
+        ) : undefined,
+        endAdornment: endAdornment ? (
+          <InputAdornment position="end">{endAdornment}</InputAdornment>
+        ) : undefined,
+        readOnly,
       }}
       inputProps={{
-        type, maxLength, step
+        type,
+        maxLength,
+        step,
       }}
       onChange={handleChange}
       disabled={disabled}
