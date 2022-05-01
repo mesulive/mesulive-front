@@ -1,20 +1,17 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import Header from "components/common/Header";
-import Navigation from "components/common/Navigation";
+import Header from "shared/components/Header/Header";
+import Navigation from "shared/components/Navigation/Navigation";
 import classNames from "classnames/bind";
-import variables from "lib/styles/utils.module.scss";
+import variables from "shared/styles/utils.module.scss";
 import { Routes, Route } from "react-router-dom";
-import CubeCalcPage from "pages/calculators/CubeCalcPage";
-import FlameCalcPage from "pages/calculators/FlameCalcPage";
-import MainPage from "pages/MainPage";
-import CubeSimPage from "pages/simulators/CubeSimPage";
-import Starforce from "pages/simulators/Starforce";
-import NotFoundPage from "pages/NotFoundPage";
-import useWindowDimensions from "lib/hooks/useWindowDimensions";
+import MainPage from "main/component/MainPage";
+import Starforce from "starforce/simulator/component/Starforce";
+import NotFoundPage from "not-found/component/NotFoundPage";
+import useWindowDimensions from "shared/hooks/useWindowDimensions";
 import { Drawer, NoSsr } from "@mui/material";
 import * as Highcharts from "highcharts";
 import { createBrowserHistory } from "history";
-import { GA } from "lib/ga";
+import { GA } from "shared/utils/ga";
 import styles from "./App.module.scss";
 
 const cx = classNames.bind(styles);
@@ -83,14 +80,14 @@ const App = () => {
             <Route path="calc/*">
               <Route path="flame" element={<NotFoundPage />} />
               <Route path="cube" element={<NotFoundPage />} />
-              {/*<Route path="flame" element={<FlameCalcPage/>}/>*/}
-              {/*<Route path="cube" element={<CubeCalcPage/>}/>*/}
+              {/* <Route path="flame" element={<FlameCalcPage/>}/> */}
+              {/* <Route path="cube" element={<CubeCalcPage/>}/> */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
             <Route path="sim/*">
               <Route path="starforce" element={<Starforce />} />
               <Route path="cube" element={<NotFoundPage />} />
-              {/*<Route path="cube" element={<CubeSimPage/>}/>*/}
+              {/* <Route path="cube" element={<CubeSimPage/>}/> */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
             <Route path="/" element={<MainPage />} />

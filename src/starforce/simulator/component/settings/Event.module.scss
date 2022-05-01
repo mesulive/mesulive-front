@@ -1,0 +1,7 @@
+@import "../../../../shared/styles/utils.module";
+
+.radio {
+  :global .MuiFormControlLabel-root:nth-child(n+2) {
+    margin-top: 8px;
+  }
+}

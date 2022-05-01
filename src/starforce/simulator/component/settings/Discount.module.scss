@@ -1,0 +1,10 @@
+@import "../../../../shared/styles/utils.module";
+
+.checkbox-label {
+  margin-right: 16px !important;
+  margin-top: 8px !important;
+}
+
+.helper-text {
+  @include helperText();
+}

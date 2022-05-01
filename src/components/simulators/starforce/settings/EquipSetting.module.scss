@@ -1,9 +1,0 @@
-@import "lib/styles/utils.module";
-
-.flex-container {
-  $interval: 16px;
-  display: grid;
-  grid-template-columns: repeat(2, calc(50% - #{$interval} / 2));
-  row-gap: $interval;
-  column-gap: $interval;
-}
