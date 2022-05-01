@@ -1,0 +1,170 @@
+@use "sass:color";
+@import "../../shared/styles/utils.module";
+
+.wrapper {
+  @include laptopOrWider() {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.container {
+  h1, h2 {
+    margin: 0;
+  }
+
+  h1 {
+    @include setFont(32px, 700);
+    color: $color_black_3;
+  }
+
+  h2 {
+    margin-top: 4px;
+    @include setFont(12px, 500);
+    color: $color_black_4;
+
+    @include laptopOrWider() {
+      @include setFont(14px, 400);
+    }
+  }
+
+  @include laptop() {
+    width: 100%;
+  }
+
+  @include desktop() {
+    width: ($breakpoint_desktop - $navi_width_desktop - 16px * 2);
+  }
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 32px;
+
+  @include mobile() {
+    justify-content: center;
+  }
+}
+
+.link-button {
+  color: white;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  height: 120px;
+
+  @include mobile() {
+    width: 100%;
+
+    &:nth-child(n+2) {
+      margin-top: 32px;
+    }
+  }
+
+  @include tabletOrWider() {
+    flex: 1 1 40%;
+
+    &:nth-child(2n+2) {
+      margin-left: 16px;
+    }
+
+    &:nth-child(n+3) {
+      margin-top: 16px;
+    }
+  }
+
+  &:nth-child(1) {
+    background-color: #FFB703;
+  }
+
+  &:nth-child(2) {
+    background-color: #E89002;
+  }
+
+  &:nth-child(3) {
+    background-color: #FF8009;
+  }
+
+  &:nth-child(4) {
+    background-color: #E85002;
+  }
+
+  &:nth-child(5) {
+    background-color: #FF3303;
+  }
+
+  svg {
+    fill: white;
+    object-fit: contain;
+    opacity: 0.5;
+    position: absolute;
+    margin: -40px 0 0 -30px;
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.button-disabled {
+  pointer-events: none;
+  filter: grayscale(70%);
+  @include disabled();
+
+  .button-name::after {
+    @include setFont(16px, 500);
+    display: flex;
+    justify-content: center;
+    content: "- 준비 중 -";
+    color: white;
+  }
+}
+
+.button-name {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8px;
+  word-break: keep-all;
+  @include setFont(22px, 700);
+
+  @include mobile() {
+
+  }
+}
+
+.made-by-character {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  margin: 24px auto 0;
+  height: 110px;
+  width: 110px;
+
+  img {
+    position: relative;
+    top: -15px;
+  }
+}
+
+.made-by-nickname {
+  @include setFont(13px, 500);
+  margin: 0 auto;
+  display: block;
+
+
+  img {
+    position: relative;
+    top: 2px;
+    margin-left: 4px;
+  }
+}
