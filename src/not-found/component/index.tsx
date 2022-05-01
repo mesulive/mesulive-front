@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styles from "not-found/component/NotFoundPage.module.scss";
 import classNames from "classnames/bind";
 
@@ -13,4 +13,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default React.memo(NotFoundPage);
