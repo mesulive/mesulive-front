@@ -1,14 +1,22 @@
 import React from "react";
 import classNames from "classnames/bind";
-import Box from "shared/components/Box/Box";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { GA } from "shared/utils/ga";
 import styles from "main/component/MainPage.module.scss";
+import { createStyles, FontWeight, setFont } from "shared/styles";
+import { BREAKPOINT_DESKTOP } from "shared/assets/breakpoints";
+import { NAVI_WIDTH_DESKTOP } from "shared/components/Navigation/Navigation";
+import { Theme, Typography } from "@mui/material";
+import { SystemStyleObject } from "@mui/system/styleFunctionSx/styleFunctionSx";
+import { COLOR_BLACK_3, COLOR_BLACK_4 } from "shared/assets/colors";
+import SectionBox from "shared/components/SectionBox";
 
 const cx = classNames.bind(styles);
 
 const MainPage = () => {
+  const style = useStyle();
+
   return (
     <div className={cx("wrapper")}>
       <Helmet>
@@ -26,14 +34,14 @@ const MainPage = () => {
           content="메수라이브, 각종 메이플 시뮬레이터와 기댓값 계산기"
         />
       </Helmet>
-      <Box className={cx("container")}>
-        <h1>mesu.live</h1>
-        <h2>
+      <SectionBox sx={style.sectionBox}>
+        <Typography variant="h1">mesu.live</Typography>
+        <Typography variant="h2">
           메이플스토리의 각종 확률형 시스템에 대한 기댓값 계산기와 시뮬레이션
           웹서비스입니다.
           <br />
           문의는 help@mesu.live로 부탁드립니다.
-        </h2>
+        </Typography>
         <div className={cx("menu-container")}>
           <Link
             to="/calc/flame"
@@ -119,9 +127,40 @@ const MainPage = () => {
             />
           </a>
         </div>
-      </Box>
+      </SectionBox>
     </div>
   );
 };
+
+const useStyle = createStyles((theme) => ({
+  sectionBox: {
+    [theme.breakpoints.between("laptop", "desktop")]: {
+      width: "100%",
+    },
+
+    [theme.breakpoints.up("desktop")]: {
+      width: BREAKPOINT_DESKTOP - NAVI_WIDTH_DESKTOP - 16 * 2,
+    },
+
+    "& .MuiTypography-root": {
+      margin: 0,
+    },
+
+    "& .MuiTypography-h1": {
+      ...(setFont(32, FontWeight.BOLD) as SystemStyleObject<Theme>),
+      color: COLOR_BLACK_3,
+    },
+
+    "& .MuiTypography-h2": {
+      ...(setFont(12, FontWeight.MEDIUM) as SystemStyleObject<Theme>),
+      color: COLOR_BLACK_4,
+      marginTop: "4px",
+
+      [theme.breakpoints.up("laptop")]: {
+        ...setFont(14, FontWeight.REGULAR),
+      },
+    },
+  },
+}));
 
 export default React.memo(MainPage);

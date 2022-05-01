@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { Box, SxProps, Theme, Typography } from "@mui/material";
-import {createStyles, FontWeight, mergeStyles, setFont} from "shared/utils/styles";
+import {createStyles, FontWeight, mergeStyles, setFont} from "shared/styles";
 import {COLOR_PRIMARY_MAIN} from "shared/assets/colors";
 
 interface SectionBoxProps {

@@ -5,7 +5,7 @@ import {
   FontWeight,
   mergeStyles,
   setFont,
-} from "shared/utils/styles";
+} from "shared/styles";
 import { COLOR_BLACK_2 } from "shared/assets/colors";
 import HelperText from "shared/components/Typography/HelperText";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { hydrateRoot, createRoot } from "react-dom/client";
 import "index.scss";
 import { ThemeProvider, StyledEngineProvider } from "@mui/material";
-import theme from "shared/utils/theme";
+import theme from "shared/styles/theme";
 import { BrowserRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
 import rootReducer from "shared/store/redux";

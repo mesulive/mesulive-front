@@ -5,6 +5,9 @@ import styles from "shared/components/Navigation/Navigation.module.scss";
 
 const cx = classNames.bind(styles);
 
+export const NAVI_WIDTH_DEFAULT = 248;
+export const NAVI_WIDTH_DESKTOP = 280;
+
 type NavigationProps = {
   active: boolean;
   toggleNavi: () => any;

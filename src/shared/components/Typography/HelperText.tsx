@@ -5,7 +5,7 @@ import {
   FontWeight,
   mergeStyles,
   setFont,
-} from "shared/utils/styles";
+} from "shared/styles";
 import { COLOR_BLACK_5 } from "shared/assets/colors";
 
 interface HelperTextProps {

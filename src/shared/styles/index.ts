@@ -11,9 +11,9 @@ export function mergeStyles(
   });
 }
 
-export function createStyles<
-  T extends Record<string, SxProps<Theme>>
->(styles: T | ((theme: Theme) => T)): () => Readonly<T> {
+export function createStyles<T extends Record<string, SxProps<Theme>>>(
+  styles: T | ((theme: Theme) => T)
+): () => Readonly<T> {
   return () => {
     const theme = useTheme();
     return typeof styles === "function" ? styles(theme) : styles;
@@ -39,5 +39,6 @@ export function setFont(px: number, weight?: number): SxProps<Theme> {
       fontWeight: weight,
     }),
     letterSpacing: `${px * -0.025}px`,
+    lineHeight: "normal",
   };
 }
