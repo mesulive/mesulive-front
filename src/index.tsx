@@ -2,14 +2,14 @@ import React from "react";
 import { hydrateRoot, createRoot } from "react-dom/client";
 import "index.scss";
 import { ThemeProvider, StyledEngineProvider } from "@mui/material";
-import theme from "lib/styles/muiTheme";
+import theme from "shared/utils/theme";
 import { BrowserRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
-import rootReducer from "store/redux";
+import rootReducer from "shared/store/redux";
 import { composeWithDevToolsDevelopmentOnly } from "@redux-devtools/extension";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "store/saga";
+import rootSaga from "shared/store/saga";
 import ReactGA from "react-ga4";
 import App from "./App";
 

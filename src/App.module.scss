@@ -1,4 +1,4 @@
-@import "lib/styles/utils.module";
+@import "shared/styles/utils.module";
 
 .container {
   @include tabletOrWider() {
