@@ -98,10 +98,5 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ]
-  },
-  "resolutions": {
-    "minimist": "1.2.6",
-    "ejs": "3.1.7",
-    "node-fetch": ">=2.6.7"
   }
 }
