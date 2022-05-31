@@ -33,8 +33,6 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "react/no-array-index-key": "off",
     "no-param-reassign": "off",
-    "import/prefer-default-export": "off",
-    "@typescript-eslint/no-use-before-define": "off",
     "prettier/prettier": [
       "off",
       {

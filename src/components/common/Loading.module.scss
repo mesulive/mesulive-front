@@ -1,0 +1,11 @@
+@import "lib/styles/utils.module";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global .MuiCircularProgress-root {
+    color: $color_black_6;
+  }
+}

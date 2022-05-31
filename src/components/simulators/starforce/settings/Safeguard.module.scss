@@ -1,0 +1,22 @@
+@import "lib/styles/utils.module";
+
+.toggle-grid-container {
+  display: grid;
+  grid-template-columns:repeat(5, 1fr);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px $color_black_6 solid;
+}
+
+.toggle-button {
+  border-left: solid $color_black_6 1px;
+  border-top: solid $color_black_6 1px;
+
+  &:nth-child(5n-4) {
+    border-left: none;
+  }
+
+  &:nth-child(-n+5) {
+    border-top: none;
+  }
+}

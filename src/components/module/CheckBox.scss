@@ -1,0 +1,26 @@
+@import "lib/styles/utils.module";
+
+.styled-mui-checkbox {
+  margin: 0;
+
+  .MuiCheckbox-root {
+    padding: 0 8px 0 0;
+
+    .MuiTouchRipple-root {
+      width: 24px;
+    }
+
+    &:not(.Mui-checked) {
+      color: $color_black_4;
+    }
+
+    &.Mui-checked ~ .MuiTypography-root {
+      color: $color_primary;
+    }
+  }
+
+  .MuiTypography-root {
+    @include setFont(14px, 500);
+    color: $color_black_4;
+  }
+}

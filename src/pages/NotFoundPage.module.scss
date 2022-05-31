@@ -1,0 +1,29 @@
+@import "lib/styles/utils.module";
+
+.wrapper {
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    color: $color_black_4;
+    margin: 0;
+    @include setFont(24px, 700);
+
+    @include laptopOrWider() {
+      @include setFont(40px, 700);
+    }
+
+
+    //@include setFont(24px, 700);
+  }
+
+  h2 {
+    color: $color_black_5;
+    margin:0;
+    @include setFont(14px, 500);
+
+    @include laptopOrWider() {
+      @include setFont(24px, 500);
+    }
+  }
+}
