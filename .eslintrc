@@ -38,7 +38,8 @@
       {
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "comma-dangle": ["error", "only-multiline"]
   },
   "parserOptions": {
     "project": "./tsconfig.json"
