@@ -11,7 +11,7 @@ import CubeSimPage from "pages/simulators/CubeSimPage";
 import Starforce from "pages/simulators/Starforce";
 import NotFoundPage from "pages/NotFoundPage";
 import useWindowDimensions from "lib/hooks/useWindowDimensions";
-import { Drawer, NoSsr } from "@mui/material";
+import { Drawer, NoSsr, Stack } from "@mui/material";
 import * as Highcharts from "highcharts";
 import { createBrowserHistory } from "history";
 import { GA } from "lib/ga";
@@ -83,14 +83,14 @@ const App = () => {
             <Route path="calc/*">
               <Route path="flame" element={<NotFoundPage />} />
               <Route path="cube" element={<NotFoundPage />} />
-              {/*<Route path="flame" element={<FlameCalcPage/>}/>*/}
-              {/*<Route path="cube" element={<CubeCalcPage/>}/>*/}
+              {/* <Route path="flame" element={<FlameCalcPage/>}/> */}
+              {/* <Route path="cube" element={<CubeCalcPage/>}/> */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
             <Route path="sim/*">
               <Route path="starforce" element={<Starforce />} />
               <Route path="cube" element={<NotFoundPage />} />
-              {/*<Route path="cube" element={<CubeSimPage/>}/>*/}
+              {/* <Route path="cube" element={<CubeSimPage/>}/> */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
             <Route path="/" element={<MainPage />} />
@@ -98,11 +98,22 @@ const App = () => {
           </Routes>
         </main>
         <footer>
-          Copyright 2022. mesulive All rights reserved.
-          <br />
-          mesulive is not associated with NEXON Korea.
-          <br />
-          Contact: help@mesu.live
+          <Stack alignItems="center">
+            <a
+              href="https://www.buymeacoffee.com/vetan2"
+              style={{ marginBottom: "8px" }}
+              target="_blank" rel="noreferrer"
+            >
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=vetan2&button_colour=ff8009&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"
+              />
+            </a>
+            Copyright 2022. mesulive All rights reserved.
+            <br />
+            mesulive is not associated with NEXON Korea.
+            <br />
+            Contact: help@mesu.live
+          </Stack>
         </footer>
       </div>
     </>
