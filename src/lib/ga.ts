@@ -21,7 +21,7 @@ class GAService {
 
   constructor() {
     if (!process.env.REACT_APP_GA_TRACKING_ID) {
-      throw new Error("GA_TRACKING_ID must be provided.");
+      // throw new Error("GA_TRACKING_ID must be provided.");
     }
 
     this.env = process.env.NODE_ENV;
