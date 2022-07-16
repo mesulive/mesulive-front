@@ -6419,7 +6419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:^6.5.1":
+"eslint-plugin-jsx-a11y@npm:^6.5.1, eslint-plugin-jsx-a11y@npm:^6.6.0":
   version: 6.6.0
   resolution: "eslint-plugin-jsx-a11y@npm:6.6.0"
   dependencies:
@@ -7186,6 +7186,7 @@ __metadata:
     eslint-config-prettier: ^8.5.0
     eslint-import-resolver-typescript: ^2.7.1
     eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.0
     eslint-plugin-only-warn: ^1.0.3
     eslint-plugin-prettier: ^4.0.0
     eslint-plugin-react: ^7.30.0
@@ -7215,6 +7216,9 @@ __metadata:
     typescript: ^4.7.2
     web-vitals: ^2.1.4
     webpack-bundle-analyzer: ^4.5.0
+  dependenciesMeta:
+    eslint@8.19.0:
+      unplugged: true
   languageName: unknown
   linkType: soft
 
