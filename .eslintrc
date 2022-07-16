@@ -39,7 +39,11 @@
         "endOfLine": "auto"
       }
     ],
-    "comma-dangle": ["error", "only-multiline"]
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "@typescript-eslint/no-empty-interface": "off"
   },
   "parserOptions": {
     "project": "./tsconfig.json"

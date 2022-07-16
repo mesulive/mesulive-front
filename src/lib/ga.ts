@@ -12,21 +12,16 @@ interface TrackEventParams {
 }
 
 interface TrackStarforceSimEventParams
-  extends Omit<TrackEventParams, "category"> {
+  extends Omit<TrackEventParams, "category"> {}
 
-}
-
-interface TrackOtherEventParams
-  extends Omit<TrackEventParams, "category"> {
-
-}
+interface TrackOtherEventParams extends Omit<TrackEventParams, "category"> {}
 
 class GAService {
   private readonly env: "development" | "production" | "test";
 
   constructor() {
     if (!process.env.REACT_APP_GA_TRACKING_ID) {
-      throw new Error("GA_TRACKING_ID must be provided.");
+      // throw new Error("GA_TRACKING_ID must be provided.");
     }
 
     this.env = process.env.NODE_ENV;
@@ -36,7 +31,7 @@ class GAService {
     return this.env === "production";
   }
 
-  public trackPageView({path}: TrackPageViewParams) {
+  public trackPageView({ path }: TrackPageViewParams) {
     const decodedPath = decodeURIComponent(path);
 
     if (!this.isProduction) {
@@ -44,7 +39,7 @@ class GAService {
       return;
     }
 
-    ReactGA.send({hitType: "pageview", page: decodedPath});
+    ReactGA.send({ hitType: "pageview", page: decodedPath });
   }
 
   public pageView() {
@@ -53,7 +48,7 @@ class GAService {
       return;
     }
 
-    if(this.isProduction) {
+    if (this.isProduction) {
       ReactGA.send("pageview");
     }
   }
@@ -68,11 +63,11 @@ class GAService {
   }
 
   public takeStarforceSimEvent(params: TrackStarforceSimEventParams) {
-    this.trackEvent({category: "sim/starforce", ...params});
+    this.trackEvent({ category: "sim/starforce", ...params });
   }
 
   public takeOtherEvent(params: TrackOtherEventParams) {
-    this.trackEvent({category: "other", ...params});
+    this.trackEvent({ category: "other", ...params });
   }
 }
 
