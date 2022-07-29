@@ -3,15 +3,12 @@ import Header from "components/common/Header";
 import Navigation from "components/common/Navigation";
 import classNames from "classnames/bind";
 import variables from "lib/styles/utils.module.scss";
-import { Routes, Route } from "react-router-dom";
-import CubeCalcPage from "pages/calculators/CubeCalcPage";
-import FlameCalcPage from "pages/calculators/FlameCalcPage";
+import { Route, Routes } from "react-router-dom";
 import MainPage from "pages/MainPage";
-import CubeSimPage from "pages/simulators/CubeSimPage";
 import Starforce from "pages/simulators/Starforce";
 import NotFoundPage from "pages/NotFoundPage";
 import useWindowDimensions from "lib/hooks/useWindowDimensions";
-import { Drawer, NoSsr, Stack } from "@mui/material";
+import { Button, Drawer, NoSsr, Stack } from "@mui/material";
 import * as Highcharts from "highcharts";
 import { createBrowserHistory } from "history";
 import { GA } from "lib/ga";
@@ -100,13 +97,25 @@ const App = () => {
         <footer>
           <Stack alignItems="center">
             <a
-              href="https://www.buymeacoffee.com/vetan2"
-              style={{ marginBottom: "8px" }}
-              target="_blank" rel="noreferrer"
+              href="https://toss.me/vetan2"
+              style={{ marginBottom: "12px" }}
+              target="_blank"
+              rel="noreferrer"
             >
-              <img
-                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=vetan2&button_colour=ff8009&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"
-              />
+              <Button
+                sx={{
+                  color: "white",
+                  borderRadius: "16px",
+                  minWidth: 200,
+                  fontFamily: "Jua",
+                  fontSize: "18px",
+                  padding: "12px 16px 8px",
+                  "& .MuiTouchRipple-root": { color: "white" },
+                }}
+                variant="contained"
+              >
+                제작자에게 커피 사주기
+              </Button>
             </a>
             Copyright 2022. mesulive All rights reserved.
             <br />

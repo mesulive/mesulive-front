@@ -10,6 +10,7 @@ export const SET_SPARE_COST = "sim/starforce/SET_SPARE_COST";
 export const SET_ERROR_MESSAGE = "sim/starforce/SET_ERROR_MESSAGE";
 export const SET_SIM_NUM = "sim/starforce/SET_SIM_NUM";
 export const TOGGLE_SAFEGUARD = "sim/starforce/TOGGLE_SAFEGUARD";
+export const TOGGLE_ALL_SAFEGUARD = "sim/starforce/TOGGLE_ALL_SAFEGUARD";
 export const TOGGLE_STARCATCH = "sim/starforce/TOGGLE_STARCATCH";
 export const SET_EVENT = "sim/starforce/SET_EVENT";
 export const TOGGLE_DISCOUNT = "sim/starforce/TOGGLE_DISCOUNT";
@@ -44,6 +45,7 @@ const setErrorMessage = createAction(
 )();
 const setSimNum = createAction(SET_SIM_NUM, (n: number | undefined) => n)();
 const toggleSafeguard = createAction(TOGGLE_SAFEGUARD, (i: number) => i)();
+const toggleAllSafeguard = createAction(TOGGLE_ALL_SAFEGUARD)();
 const toggleStarcatch = createAction(TOGGLE_STARCATCH, (i: number) => i)();
 const setEvent = createAction(SET_EVENT, (v: StarforceEvent) => v)();
 const toggleDiscount = createAction(TOGGLE_DISCOUNT, (v: string) => v)();
@@ -74,6 +76,7 @@ export const actions = {
   setErrorMessage,
   setSimNum,
   toggleSafeguard,
+  toggleAllSafeguard,
   toggleStarcatch,
   setEvent,
   toggleDiscount,
@@ -201,6 +204,12 @@ const starforce = createReducer<StarforceState, StarforceAction>(initialState, {
   [TOGGLE_SAFEGUARD]: (state, { payload: i }) =>
     produce(state, (draft) => {
       draft.detail.safeguardArr[i] = !draft.detail.safeguardArr[i];
+    }),
+  [TOGGLE_ALL_SAFEGUARD]: (state) =>
+    produce(state, (draft) => {
+      draft.detail.safeguardArr.fill(
+        !draft.detail.safeguardArr.some((safeguard) => safeguard)
+      );
     }),
   [TOGGLE_STARCATCH]: (state, { payload: i }) =>
     produce(state, (draft) => {
