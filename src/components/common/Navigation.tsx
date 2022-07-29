@@ -56,7 +56,12 @@ const Navigation: React.FC<React.PropsWithChildren<NavigationProps>> = ({
           </svg>
           환생의 불꽃
         </Link>
-        <Link to="/calc/cube" onClick={toggleNavi} disabled>
+        <a
+          className={cx("link")}
+          href="https://cubemesu.co"
+          target="_blank"
+          rel="noreferrer"
+        >
           <svg id="Icons" version="1.1" viewBox="0 0 32 32">
             <g>
               <path d="m 16 15.8 l 12.3 -7.1 l -12.3 -7.1 l -12.3 7.1 l 12.3 7.1 z" />
@@ -65,11 +70,11 @@ const Navigation: React.FC<React.PropsWithChildren<NavigationProps>> = ({
             </g>
           </svg>
           큐브
-        </Link>
+        </a>
       </div>
       <div className={cx("group")}>
         <div className={cx("group-label")}>시뮬레이터</div>
-        <Link to="/sim/starforce" onClick={toggleNavi} beta>
+        <Link to="/sim/starforce" onClick={toggleNavi}>
           <svg version="1.1" viewBox="0 0 24 24">
             <g id="info" />
             <g id="icons">
