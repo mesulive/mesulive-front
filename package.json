@@ -104,6 +104,9 @@
   "dependenciesMeta": {
     "eslint@8.19.0": {
       "unplugged": true
+    },
+    "prettier@2.7.1": {
+      "unplugged": true
     }
   }
 }
